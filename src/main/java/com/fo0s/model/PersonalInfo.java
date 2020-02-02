@@ -9,8 +9,7 @@ import static com.fo0s.HelperFile.*;
 
 public class PersonalInfo {
     private static int id;
-    private static String firstName;
-    private static String lastName;
+    private static String playerName;
     private static long overallPoints;
     private static long overallRank;
     private static int currentWeek;
@@ -21,11 +20,9 @@ public class PersonalInfo {
         return id;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getPlayerName() {
+        return playerName;
     }
-
-    public String getLastName() { return lastName; }
 
     public long getOverallPoints() {
         return overallPoints;
@@ -50,13 +47,8 @@ public class PersonalInfo {
     public static class PersonalInfoBuilder {
         private PersonalInfo personalInfo = new PersonalInfo();
 
-        public PersonalInfoBuilder setFirstName(String firstName) {
-            this.personalInfo.firstName = firstName;
-            return this;
-        }
-
-        public PersonalInfoBuilder setLastName(String lastName) {
-            this.personalInfo.lastName = lastName;
+        public PersonalInfoBuilder setPlayerName(String firstName) {
+            this.personalInfo.playerName = firstName;
             return this;
         }
 
@@ -71,22 +63,22 @@ public class PersonalInfo {
         }
 
         public PersonalInfoBuilder setCurrentWeek(int currentWeek) {
-            PersonalInfo.currentWeek = currentWeek;
+            this.personalInfo.currentWeek = currentWeek;
             return this;
         }
 
         public PersonalInfoBuilder setLeagueIds(ArrayList<Long> leagueIds) {
-            PersonalInfo.leagueIds = leagueIds;
+            this.personalInfo.leagueIds = leagueIds;
             return this;
         }
 
         public PersonalInfoBuilder setLeagueNames(ArrayList<String> leagueNames) {
-            PersonalInfo.leagueNames = leagueNames;
+            this.personalInfo.leagueNames = leagueNames;
             return this;
         }
 
         public PersonalInfoBuilder setId(int id) {
-            PersonalInfo.id = id;
+            this.personalInfo.id = id;
             return this;
         }
 
@@ -102,14 +94,13 @@ public class PersonalInfo {
         PersonalInfo.PersonalInfoBuilder personalInfo = new PersonalInfo.PersonalInfoBuilder();
 
         for(int i = 4; i < playerLeagues.size(); i++) {
-            leagueIDs.add(playerLeagues.get(i).getAsJsonObject().get("id").getAsLong());
-            leagueNames.add(playerLeagues.get(i).getAsJsonObject().get("name").getAsString());
+            leagueIDs.add(playerLeagues.get(i).getAsJsonObject().get(PLAYER_ID).getAsLong());
+            leagueNames.add(playerLeagues.get(i).getAsJsonObject().get(DEFAULT_NAME).getAsString());
         }
 
         personalInfo.setId(jsonObject.get(PLAYER_ID).getAsInt());
-        personalInfo.setFirstName(jsonObject.get(PLAYER_FIRST_NAME).toString());
-        personalInfo.setLastName(jsonObject.get(PLAYER_LAST_NAME).toString());
-        personalInfo.setLastName(jsonObject.get(PLAYER_LAST_NAME).toString());
+        personalInfo.setPlayerName(jsonObject.get(PLAYER_FIRST_NAME).toString() +" "+
+                jsonObject.get(PLAYER_LAST_NAME).toString());
         personalInfo.setOverallPoints(jsonObject.get(PLAYER_OVERALL_POINTS).getAsInt());
         personalInfo.setOverallRank(jsonObject.get(PLAYER_OVERALL_RANK).getAsInt());
         personalInfo.setCurrentWeek(jsonObject.get(PLAYER_CURRENT_WEEK).getAsInt());
@@ -117,8 +108,6 @@ public class PersonalInfo {
         personalInfo.setLeagueNames(leagueNames);
 
         return personalInfo.build();
-    }
-    public static void personalLeagues() {
 
     }
 }

@@ -26,8 +26,7 @@ public class PersonalInfoTest {
         personalInfoBuilder.setCurrentWeek(randomIntNumber);
         personalInfoBuilder.setOverallRank(randomIntNumber);
         personalInfoBuilder.setOverallPoints(randomIntNumber);
-        personalInfoBuilder.setLastName(randomString);
-        personalInfoBuilder.setFirstName(randomString);
+        personalInfoBuilder.setPlayerName(randomString);
         personalInfoBuilder.setLeagueIds(leagueIds);
         personalInfoBuilder.setLeagueNames(leagueNames);
 
@@ -36,8 +35,7 @@ public class PersonalInfoTest {
         assertEquals(randomIntNumber, personalInfo.getCurrentWeek());
         assertEquals(randomIntNumber, personalInfo.getOverallRank());
         assertEquals(randomIntNumber, personalInfo.getOverallPoints());
-        assertEquals(randomString, personalInfo.getFirstName());
-        assertEquals(randomString, personalInfo.getLastName());
+        assertEquals(randomString, personalInfo.getPlayerName());
         assertEquals(leagueIds, personalInfo.getLeagueIds());
         assertEquals(leagueNames, personalInfo.getLeagueNames());
     }

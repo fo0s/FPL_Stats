@@ -14,4 +14,11 @@ public class HelperFile {
     public static final String PLAYER_OVERALL_POINTS = "summary_overall_points";
     public static final String PLAYER_OVERALL_RANK = "summary_overall_rank";
     public static final String PLAYER_CURRENT_WEEK = "current_event";
+
+    // League info API endpoint
+    public static final String DEFAULT_NAME = "name";
+    public static final String LEAGUE_PLAYER_HANDLE = "entry_name";
+    public static final String LEAGUE_PLAYER_NAME = "player_name";
+
+
 }
